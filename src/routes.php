@@ -32,4 +32,10 @@ $app->group('/api', function () use ($app) {
     $app->get('/usuarios', 'funciongetusuario');
     $app->delete('/usuarios', 'funcionaeliminarusuario'); 
     $app->patch('/usuarios', 'funcionactualizarusuario'); 
+
+    //FUNCIONES DE LA TABLA ANIMAL
+    $app->post('/usuarios','funcioninsertaranimal');
+    $app->get('/usuarios', 'funciongetanimal');
+    $app->delete('/usuarios', 'funcionaeliminaranimal'); 
+    $app->patch('/usuarios', 'funcionactualizaranimal'); 
 });
