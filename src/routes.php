@@ -29,7 +29,7 @@ $app->group('/api', function () use ($app) {
     
     //FUNCIONES DE LA TABLA USUARIO
     $app->post('/usuarios','funcioninsertarusuario');
-    $app->post('/usuarios', 'funciongetusuario');
-    $app->post('/usuarios', 'funcionaeliminarusuario'); 
-    $app->post('/usuarios', 'funcionactualizarusuario'); 
+    $app->get('/usuarios', 'funciongetusuario');
+    $app->delete('/usuarios', 'funcionaeliminarusuario'); 
+    $app->patch('/usuarios', 'funcionactualizarusuario'); 
 });
