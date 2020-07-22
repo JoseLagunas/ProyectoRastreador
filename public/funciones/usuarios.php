@@ -1,7 +1,7 @@
 <?
 require __DIR__ . '/../../src/models/usuarios.php';
 
-function funcioninsertarusuarios($request){
-    $objUsuario= new Usuario();
+function funcioninsertarusuario($request){
+    $objUsuario= new Usuarios();
     return $objUsuario->insertarUsuario($request);
 }

@@ -28,5 +28,5 @@ $app->group('/api', function () use ($app) {
     $app->patch('/sensores','funcionActualizarSensores');
     
     //FUNCIONES DE LA TABLA USUARIO
-    $app->post('/usuarios',' funcioninsertarusuarios');
+    $app->post('/usuarios',' funcioninsertarusuario');
 });
