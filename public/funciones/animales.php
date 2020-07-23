@@ -1,6 +1,6 @@
 
 <?
-equire __DIR__ . '/../../src/models/animales.php';
+require __DIR__ . '/../../src/models/animales.php';
 
 function funcioninsertaranimal($request){
     $objUsuario= new Animales();

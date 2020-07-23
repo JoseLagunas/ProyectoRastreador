@@ -41,9 +41,9 @@ $app->group('/api', function () use ($app) {
 
     //FUNCIONES DE LA TABLA LIMITACIONES
     $app->post('/limitaciones','funcioninsertarlimitaciones');
-    $app->get('/limitaciones', 'funciongetlimitaciones');
-    $app->delete('/limitaciones', 'funcionaeliminarlimitaciones'); 
-    $app->patch('/limitaciones', 'funcionactualizarlimitaciones');
+    $app->get('/limitaciones','funciongetlimitaciones');
+    $app->delete('/limitaciones','funcionaeliminarlimitaciones'); 
+    $app->patch('/limitaciones','funcionactualizarlimitaciones');
 
     //FUNCIONES DE LA TABLA RASTREADOR
     $app->post('/rastreadores','funcioninsertarrastreador');

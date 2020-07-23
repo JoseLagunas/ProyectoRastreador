@@ -23,7 +23,7 @@ class Limitaciones
       try {
         $statement = $this->con->prepare($sql);
         $statement->bindparam("distancia_maxima_permitida", $req->distancia_maxima_permitida);
-        $statement->bindparam("ubicacion_geografica ", $req->ubicacion_geografica);
+        $statement->bindparam("ubicacion_geografica", $req->ubicacion_geografica);
         $statement->execute();
         $response=$req;
       } catch (Exception $e) {
