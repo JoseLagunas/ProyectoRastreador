@@ -18,7 +18,7 @@ class Animales
   {
     $req = json_decode($request->getbody());
 
-    $sql = "INSERT INTO animal(nombre, estado, edad) VALUES(:nombre,:estado,:edad)";
+    $sql = "INSERT INTO animal (nombre, estado, edad) VALUES(:nombre,:estado,:edad)";
     $response=new stdClass();
       try {
         $statement = $this->con->prepare($sql);

@@ -43,7 +43,10 @@ require_once __DIR__ . '/../includes/DbConnect.php';
 include 'funciones/calculadora.php';
 include 'funciones/sensores.php';
 include 'funciones/usuarios.php';
-include 'funciones/animales.php'
+include 'funciones/animales.php';
+include 'funciones/limitaciones.php';
+include 'funciones/rastreadores.php';
+
 // Run app
 $app->run();
 

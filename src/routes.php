@@ -32,10 +32,22 @@ $app->group('/api', function () use ($app) {
     $app->get('/usuarios', 'funciongetusuario');
     $app->delete('/usuarios', 'funcionaeliminarusuario'); 
     $app->patch('/usuarios', 'funcionactualizarusuario'); 
-
+    
     //FUNCIONES DE LA TABLA ANIMAL
-    $app->post('/usuarios','funcioninsertaranimal');
-    $app->get('/usuarios', 'funciongetanimal');
-    $app->delete('/usuarios', 'funcionaeliminaranimal'); 
-    $app->patch('/usuarios', 'funcionactualizaranimal'); 
+    $app->post('/animales','funcioninsertaranimal');
+    $app->get('/animales', 'funciongetanimal');
+    $app->delete('/animales', 'funcionaeliminaranimal'); 
+    $app->patch('/animales', 'funcionactualizaranimal'); 
+
+    //FUNCIONES DE LA TABLA LIMITACIONES
+    $app->post('/limitaciones','funcioninsertarlimitaciones');
+    $app->get('/limitaciones', 'funciongetlimitaciones');
+    $app->delete('/limitaciones', 'funcionaeliminarlimitaciones'); 
+    $app->patch('/limitaciones', 'funcionactualizarlimitaciones');
+
+    //FUNCIONES DE LA TABLA RASTREADOR
+    $app->post('/rastreadores','funcioninsertarrastreador');
+    $app->get('/rastreadores', 'funciongetrastreadordata');
+    $app->delete('/rastreadores', 'funcioneliminarRastreador'); 
+    $app->patch('/rastreadores', 'funcionactualizarRastreador');
 });
