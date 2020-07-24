@@ -18,13 +18,13 @@ class Rastreadores
   {
     $req = json_decode($request->getbody());
 
-    $sql = "INSERT INTO rastreador (latitud, longitud, ultima_posicion, hora) VALUES(:latitud, :longitud, :ultima_posicion, :hora)";
+    $sql = "INSERT INTO rastreador (id_animal ,latitud, longitud, hora) VALUES(:id_animal,:latitud,:longitud,:hora)";
     $response=new stdClass();
       try {
         $statement = $this->con->prepare($sql);
+        $statement->bindparam("id_animal", $req->id_animal);
         $statement->bindparam("latitud", $req->latitud);
         $statement->bindparam("longitud", $req->longitud);
-        $statement->bindparam("ultima_posicion", $req->ultima_posicion);
         $statement->bindparam("hora", $req->hora);
         $statement->execute();
         $response=$req;
@@ -74,15 +74,15 @@ class Rastreadores
   {
     $req = json_decode($request->getbody());
 
-    $sql = "UPDATE rastreador SET latitud=:latitud, longitud=:longitud, ultima_posicion=:ultima_posicion, hora=:hora  
+    $sql = "UPDATE rastreador SET id_animal=:id_animal, latitud=:latitud, longitud=:longitud, hora=:hora  
     WHERE id_rastreador=:id_rastreador";
     $response=new stdClass();
       try {
         $statement = $this->con->prepare($sql);
         $statement->bindparam("id_rastreador", $req->id_rastreador);
+        $statement->bindparam("id_animal", $req->id_animal);
         $statement->bindparam("latitud", $req->latitud);
         $statement->bindparam("longitud", $req->longitud);
-        $statement->bindparam("ultima_posicion", $req->ultima_posicion);
         $statement->bindparam("hora", $req->hora);
         $statement->execute();
         $response=$result="se logro modificar el id: $req->id_rastreador";

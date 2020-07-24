@@ -1,5 +1,5 @@
 <?php
-class Animales
+class Reportes
 {
   private $con;
 
@@ -14,18 +14,17 @@ class Animales
     $this->con = null;
   }
 
-  public function insertarAnimal($request)
+  public function insertarReporte($request)
   {
     $req = json_decode($request->getbody());
 
-    $sql = "INSERT INTO animal (id_usuario, nombre, estado, edad) VALUES(:id_usuario,:nombre,:estado,:edad)";
+    $sql = "INSERT INTO reporte (id_rastreador ,ultima_posicion, hora) VALUES(:id_rastreador ,:ultima_posicion, :hora)";
     $response=new stdClass();
       try {
         $statement = $this->con->prepare($sql);
-        $statement->bindparam("id_usuario", $req->id_usuario);
-        $statement->bindparam("nombre", $req->nombre);
-        $statement->bindparam("estado", $req->estado);
-        $statement->bindparam("edad", $req->edad);
+        $statement->bindparam("id_rastreador", $req->id_rastreador);
+        $statement->bindparam("ultima_posicion", $req->ultima_posicion);
+        $statement->bindparam("hora", $req->hora);
         $statement->execute();
         $response=$req;
       } catch (Exception $e) {
@@ -34,15 +33,15 @@ class Animales
 
     return json_encode($response);
   }
-  public function getAnimalData($request)
+  public function getReporteData($request)
   {
     $req = json_decode($request->getbody());
 
-    $sql = "SELECT * FROM animal WHERE id_animal=:id_animal";
+    $sql = "SELECT * FROM reporte WHERE id_reporte=:id_reporte";
     $response=new stdClass();
       try {
         $statement = $this->con->prepare($sql);
-        $statement->bindparam("id_animal", $req->id_animal);      
+        $statement->bindparam("id_reporte", $req->id_reporte);      
         $statement->execute();        
         $response->result=$statement->fetchall(PDO::FETCH_OBJ);
       } catch (Exception $e) {
@@ -51,39 +50,40 @@ class Animales
 
     return json_encode($response);
   }
-  public function eliminaranimal($request)
+
+  public function eliminarReporte($request)
   {
     $req = json_decode($request->getbody());
 
-    $sql = "DELETE FROM animal WHERE id_animal=:id_animal";
+    $sql = "DELETE FROM reporte WHERE id_reporte=:id_reporte";
     $response=new stdClass();
       try {
         $statement = $this->con->prepare($sql);
-        $statement->bindparam("id_animal", $req->id_animal);
+        $statement->bindparam("id_reporte", $req->id_reporte);
         $statement->execute();
-        $response=$result="se logro borrar el id_animal: $req->id_animal";
+        $response=$result="se logro borrar el id_reporte: $req->id_reporte";
       } catch (Exception $e) {
         $response->mensaje = $e->getMessage();
       }
 
-    return json_encode($response); 
+    return json_encode($response);
   }
 
-  public function actualizaranimal($request)
+  public function actualizarReporte($request)
   {
     $req = json_decode($request->getbody());
 
-    $sql = "UPDATE animal SET id_usuario=:id_usuario, nombre=:nombre,estado=:estado,edad=:edad WHERE id_animal=:id_animal";
+    $sql = "UPDATE reporte SET id_rastreador=:id_rastreador, ultima_posicion=:ultima_posicion, hora=:hora  
+    WHERE id_reporte=:id_reporte";
     $response=new stdClass();
       try {
         $statement = $this->con->prepare($sql);
-        $statement->bindparam("id_animal", $req->id_animal);
-        $statement->bindparam("id_usuario", $req->id_usuario);
-        $statement->bindparam("nombre", $req->nombre);
-        $statement->bindparam("estado", $req->estado);
-        $statement->bindparam("edad", $req->edad);
+        $statement->bindparam("id_reporte", $req->id_reporte);
+        $statement->bindparam("id_rastreador", $req->id_rastreador);
+        $statement->bindparam("ultima_posicion", $req->ultima_posicion);
+        $statement->bindparam("hora", $req->hora);
         $statement->execute();
-        $response=$result="se logro modificar el id: $req->id_animal";
+        $response=$result="se logro modificar el id: $req->id_reporte";
       } catch (Exception $e) {
         $response->mensaje = $e->getMessage();
       }

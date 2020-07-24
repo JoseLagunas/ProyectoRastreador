@@ -18,10 +18,11 @@ class Limitaciones
   {
     $req = json_decode($request->getbody());
 
-    $sql = "INSERT INTO limitaciones (distancia_maxima_permitida,ubicacion_geografica) VALUES(:distancia_maxima_permitida,:ubicacion_geografica)";
+    $sql = "INSERT INTO limitaciones (id_animal,distancia_maxima_permitida,ubicacion_geografica) VALUES(:id_animal, :distancia_maxima_permitida,:ubicacion_geografica)";
     $response=new stdClass();
       try {
         $statement = $this->con->prepare($sql);
+        $statement->bindparam("id_animal", $req->id_animal);
         $statement->bindparam("distancia_maxima_permitida", $req->distancia_maxima_permitida);
         $statement->bindparam("ubicacion_geografica", $req->ubicacion_geografica);
         $statement->execute();
@@ -72,12 +73,13 @@ class Limitaciones
     $req = json_decode($request->getbody());
 
     $sql = "UPDATE limitaciones 
-    SET distancia_maxima_permitida=:distancia_maxima_permitida,ubicacion_geografica=:ubicacion_geografica 
+    SET id_animal=:id_animal, distancia_maxima_permitida=:distancia_maxima_permitida,ubicacion_geografica=:ubicacion_geografica 
     WHERE id_limitaciones=:id_limitaciones";
     $response=new stdClass();
       try {
         $statement = $this->con->prepare($sql);
         $statement->bindparam("id_limitaciones", $req->id_limitaciones);
+        $statement->bindparam("id_animal", $req->id_animal);
         $statement->bindparam("distancia_maxima_permitida", $req->distancia_maxima_permitida);
         $statement->bindparam("ubicacion_geografica", $req->ubicacion_geografica);
         $statement->execute();

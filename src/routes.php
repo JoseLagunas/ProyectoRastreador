@@ -50,4 +50,10 @@ $app->group('/api', function () use ($app) {
     $app->get('/rastreadores', 'funciongetrastreadordata');
     $app->delete('/rastreadores', 'funcioneliminarRastreador'); 
     $app->patch('/rastreadores', 'funcionactualizarRastreador');
+
+    //FUNCIONES DE LA TABLA REPORTE
+    $app->post('/reportes','funcioninsertarreporte');
+    $app->get('/reportes', 'funciongetreporte');
+    $app->delete('/reportes', 'funcionaeliminarreporte'); 
+    $app->patch('/reportes', 'funcionactualizarreporte');
 });

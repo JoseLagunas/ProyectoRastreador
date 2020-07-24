@@ -46,7 +46,7 @@ include 'funciones/usuarios.php';
 include 'funciones/animales.php';
 include 'funciones/limitaciones.php';
 include 'funciones/rastreadores.php';
-
+include 'funciones/reportes.php';
 // Run app
 $app->run();
 
